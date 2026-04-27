@@ -148,6 +148,14 @@ export function SlideViewer({ slides }: { slides: Slide[] }) {
                 )
               },
               pre: ({ children }) => <pre className="mb-4">{children}</pre>,
+              img: ({ src, alt }) => (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img
+                  src={src}
+                  alt={alt || ""}
+                  className="mx-auto my-6 max-h-[40vh]"
+                />
+              ),
               a: ({ href, children }) => (
                 <a
                   href={href}

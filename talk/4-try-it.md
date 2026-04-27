@@ -4,4 +4,6 @@ Scan the QR code. Adopt a hedgehog. Chat with Max.
 
 Break things. I want the data.
 
-<!-- TODO: add QR code image -->
+![QR Code](/qr-talk.svg)
+
+**hog.pet**
