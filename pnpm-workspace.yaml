@@ -1,0 +1,5 @@
+ignoredBuiltDependencies:
+  - sharp
+  - unrs-resolver
+
+storeDir: /Users/fcgomes/Library/pnpm/store/v10
