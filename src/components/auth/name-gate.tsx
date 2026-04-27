@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import { usePathname } from "next/navigation"
 import { useAuth } from "@/lib/auth-context"
 import { useI18n } from "@/lib/i18n/context"
 import { Button } from "@/components/ui/button"
@@ -11,6 +12,10 @@ export function NameGate({ children }: { children: React.ReactNode }) {
   const { displayName, setDisplayName, isReady } = useAuth()
   const { locale, setLocale, t } = useI18n()
   const [value, setValue] = useState("")
+  const pathname = usePathname()
+
+  // Skip gate for the talk/slides route
+  if (pathname?.startsWith("/talk")) return <>{children}</>
 
   if (!isReady) return null
   if (displayName) return <>{children}</>
