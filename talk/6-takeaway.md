@@ -1,5 +1,4 @@
-# Agora deixa eu entender vocês.
+# Como podemos melhorar?
 
-Sem dashboard. Sem SQL.
-
-Só pergunta.
+- Vocês usaram a plataforma de adoção
+- Quais são os problemas dela? 

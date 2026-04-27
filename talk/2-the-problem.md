@@ -1,3 +1,3 @@
-# Construir não é mais o problema.
+# Código virou commodity
 
-Em uma tarde, qualquer um coloca um produto no ar.
+- Hoje é muito fácil criar e lançar um produto.
