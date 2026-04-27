@@ -1,9 +1,7 @@
-# Everyone can build now.
+# Vibecodei isso aqui ontem à tarde.
 
-I vibecoded a hedgehog adoption platform in an afternoon.
+Plataforma de adoção de ouriços. Chat com IA, banco realtime, internacionalização.
 
-AI chatbot, realtime streaming, database, the works.
+Tudo.
 
-**The hard part isn't building.**
-
-**The hard part is what comes after.**
+**Construir já não é mais o problema.**

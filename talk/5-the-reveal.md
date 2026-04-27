@@ -1,15 +1,15 @@
-# Now let me understand my users.
+# Agora deixa eu entender quem vocês são.
 
-I'm going to connect to PostHog through an MCP — the same way you'd talk to any tool through Claude or Cursor.
+Vou conectar no PostHog via MCP. Mesma coisa que vocês fariam com Claude ou Cursor pra qualquer ferramenta.
 
-And I'm going to ask the questions every builder has after they ship:
+E vou perguntar o que qualquer um quer saber depois de publicar:
 
-- **"How many people visited in the last 5 minutes?"**
-- **"Where are they dropping off in the adoption flow?"**
-- **"Show me a session replay of someone who abandoned."**
-- **"What are people asking the chatbot?"**
-- **"Did anything break?"**
+- Quantas pessoas entraram nos últimos minutos?
+- Onde caíram no fluxo de adoção?
+- Mostra um replay de alguém que desistiu.
+- O que tão perguntando pro chatbot?
+- Quebrou alguma coisa?
 
-No dashboards. No SQL. Just questions.
+Sem dashboard. Sem SQL. Só pergunta.
 
-*[ live MCP demo ]*
+*[ demo ao vivo ]*

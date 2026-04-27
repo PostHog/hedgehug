@@ -1,8 +1,8 @@
-# Be my users.
+# Bora. Vocês são meus usuários agora.
 
-Scan the QR code. Adopt a hedgehog. Chat with Max.
+Escaneia o QR. Adota um ouriço. Conversa com o Max.
 
-Break things. I want the data.
+Pode quebrar coisa. Quanto mais movimento, melhor.
 
 ![QR Code](/qr-talk.svg)
 

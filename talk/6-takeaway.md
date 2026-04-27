@@ -1,11 +1,9 @@
-# Building is solved. Growth isn't.
+# Construir já era. Crescer ainda não.
 
-The difference between a side project and a product is **understanding your users**.
+A diferença entre um projeto de fim de semana e um produto é entender quem usa.
 
-You don't need to be a data engineer. You don't need five different analytics tools.
+Não precisa ser engenheiro de dados. Não precisa juntar cinco ferramentas.
 
-You need to ask the right questions — and have something that answers them.
+Precisa fazer as perguntas certas, e ter algo que responda.
 
-**PostHog is how you close that gap.**
-
-posthog.com
+**posthog.com**

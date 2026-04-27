@@ -1,9 +1,9 @@
-# This is where PostHog comes in.
+# Aqui entra o PostHog.
 
-PostHog is an open-source product analytics platform.
+Análise de produto, replay de sessão, feature flags, A/B test, error tracking, observabilidade de IA.
 
-Analytics, session replay, feature flags, A/B tests, error tracking, AI observability — **one platform**.
+Tudo num lugar só.
 
-I work there. And yes — our mascot is a hedgehog. That's why this demo exists.
+Eu trabalho lá. E sim, nosso mascote é um ouriço. Por isso essa demo existe.
 
-We believe the gap between *building* a product and *growing* a product shouldn't require stitching together 5 different SaaS tools.
+A gente acredita que entender quem usa seu produto não devia exigir cinco ferramentas amarradas com fita.

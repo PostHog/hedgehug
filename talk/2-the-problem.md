@@ -1,13 +1,11 @@
-# You shipped. Now what?
+# Você publicou. E agora?
 
-You can prompt your way to a product.
+Dá pra promptar até virar produto. Promptar até crescer, ainda não.
 
-You can't prompt your way to growth.
+- Alguém está realmente usando isso?
+- Onde as pessoas travam?
+- O chatbot está ajudando ou viajando?
+- Quebrou alguma coisa que você nem percebeu?
+- O que muda agora?
 
-- Is anyone actually using this?
-- Where do they get stuck?
-- Is my AI chatbot helping or hallucinating?
-- What's broken that I don't know about?
-- What should I change next?
-
-**You're flying blind.**
+**Você está no escuro.**
