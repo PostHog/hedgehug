@@ -1,5 +1,4 @@
-# É aqui que entra o PostHog.
+# PostHog
 
-Tudo o que você precisa pra entender quem usa seu produto.
-
-Em um lugar só.
+- O que é esse tal de Analytics?
+- Como isso ajuda meu produto?

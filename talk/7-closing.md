@@ -1,3 +1,5 @@
-# Construir já era.
+# Crescer é tão importante quanto construir
 
-# Crescer ainda não.
+- Precisamos entender nosso usuários
+
+**posthog.com**

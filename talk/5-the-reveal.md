@@ -1,7 +1,5 @@
-# Sua vez.
+# Demo
 
-Adota um ouriço.
+Adote um porco-espinho.
 
 ![QR Code](/qr-talk.svg)
-
-**hog.pet**
