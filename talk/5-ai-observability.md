@@ -2,15 +2,24 @@
 
 The chatbot (Max) uses Claude Haiku with streaming. Every conversation is traced:
 
-- **OTel instrumentation** auto-traces Anthropic API calls (spans with model, tokens, latency)
-- **`$ai_generation` events** capture the full prompt/response, input/output tokens, time-to-first-token
-- **Supabase Realtime** delivers streamed tokens to the UI — the message builds up live
+```mermaid
+flowchart LR
+    User["User message"] --> API["API Route"]
+    API --> Prompt["Build system prompt\n(queries DB)"]
+    Prompt --> Claude["Claude Haiku\n(streaming)"]
+    Claude --> DB["Save to Supabase"]
+    DB --> RT["Realtime\ndelivers to UI"]
 
-The system prompt is dynamic — it queries the hedgehog database on every request so Max always knows the current inventory.
+    API -.- OTel["OTel span\n→ PostHog"]
+    Claude -.- Trace["$ai_generation\nmodel · tokens · latency"]
+
+    style OTel fill:#1D4AFF,stroke:#1D4AFF,color:#fff
+    style Trace fill:#1D4AFF,stroke:#1D4AFF,color:#fff
+```
 
 What you can see in PostHog:
 - Which hedgehogs users ask about most
-- Average response latency
+- Average response latency and time-to-first-token
 - Token usage per conversation
 - Whether the chatbot is hallucinating (check `$ai_output_choices`)
 

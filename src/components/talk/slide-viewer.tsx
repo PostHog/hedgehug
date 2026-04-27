@@ -4,6 +4,7 @@ import { useState, useEffect, useCallback } from "react"
 import ReactMarkdown from "react-markdown"
 import { ChevronLeft, ChevronRight } from "lucide-react"
 import Image from "next/image"
+import { MermaidDiagram } from "./mermaid-diagram"
 
 interface Slide {
   filename: string
@@ -127,6 +128,11 @@ export function SlideViewer({ slides }: { slides: Slide[] }) {
                 </blockquote>
               ),
               code: ({ children, className }) => {
+                const isMermaid = className?.includes("language-mermaid")
+                if (isMermaid) {
+                  const chart = String(children).replace(/\n$/, "")
+                  return <MermaidDiagram chart={chart} />
+                }
                 const isBlock = className?.includes("language-")
                 if (isBlock) {
                   return (
