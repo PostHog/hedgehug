@@ -14,27 +14,17 @@ You shipped a feature. Users aren't converting. You open three different tools, 
 
 ## Architecture
 
-```
-┌──────────────┐     ┌──────────────┐     ┌──────────────┐
-│   Browser     │────▶│   Next.js    │────▶│   Supabase   │
-│  posthog-js   │     │  API Routes  │     │  Postgres +  │
-│  exceptions   │     │  posthog-node│     │  Realtime     │
-│  logs         │     │  OTel logs   │     │              │
-└──────┬───────┘     └──────┬───────┘     └──────────────┘
-       │                     │
-       ▼                     ▼
-┌──────────────────────────────────────────┐
-│              PostHog                      │
-│  Analytics · Funnels · Feature Flags     │
-│  Session Replay · Error Tracking         │
-│  Logs · AI Observability                 │
-└──────────────────────────────────────────┘
-                     │
-                     ▼
-          ┌──────────────────┐
-          │  Anthropic API   │
-          │  Claude Haiku    │
-          │  (traced via     │
-          │   OTel → PostHog)│
-          └──────────────────┘
+```mermaid
+flowchart TB
+    Browser["Browser\nposthog-js\nexceptions + logs"]
+    NextJS["Next.js\nAPI Routes\nposthog-node + OTel"]
+    Supabase["Supabase\nPostgres + Realtime"]
+    PostHog["PostHog\nAnalytics · Funnels · Feature Flags\nSession Replay · Error Tracking\nLogs · AI Observability"]
+    Anthropic["Anthropic API\nClaude Haiku\ntraced via OTel"]
+
+    Browser --> NextJS --> Supabase
+    Browser --> PostHog
+    NextJS --> PostHog
+    NextJS --> Anthropic
+    Anthropic -.-> PostHog
 ```

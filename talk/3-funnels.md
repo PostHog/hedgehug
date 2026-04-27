@@ -2,8 +2,15 @@
 
 The adoption funnel has 3 events:
 
-```
-adoption_started → adoption_terms_accepted → adoption_requested
+```mermaid
+flowchart LR
+    A["adoption_started"] --> B["adoption_terms_accepted"]
+    B --> C["adoption_requested"]
+
+    A -. "70% drop off" .-> X["abandoned"]
+
+    style X fill:#e94560,stroke:#e94560,color:#fff
+    style C fill:#16c784,stroke:#16c784,color:#fff
 ```
 
 The funnel showed 70% drop-off at the terms step. But it doesn't tell you **why**.

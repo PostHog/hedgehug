@@ -1,12 +1,10 @@
 import type { Metadata, Viewport } from "next"
 import { Inter } from "next/font/google"
-import { Header } from "@/components/layout/header"
-import { Footer } from "@/components/layout/footer"
-import { ChatWidget } from "@/components/chat/chat-widget"
 import { AuthProvider } from "@/lib/auth-context"
 import { NameGate } from "@/components/auth/name-gate"
 import { ErrorBoundary } from "@/components/error-boundary"
 import { I18nProvider } from "@/lib/i18n/context"
+import { AppShell } from "@/components/layout/app-shell"
 import "./globals.css"
 
 const inter = Inter({
@@ -39,10 +37,7 @@ export default function RootLayout({
           <I18nProvider>
             <AuthProvider>
               <NameGate>
-                <Header />
-                <main className="flex-1">{children}</main>
-                <Footer />
-                <ChatWidget />
+                <AppShell>{children}</AppShell>
               </NameGate>
             </AuthProvider>
           </I18nProvider>
