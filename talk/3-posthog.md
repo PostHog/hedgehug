@@ -1,9 +1,6 @@
-# Aqui entra o PostHog.
+# O difícil é o que vem depois.
 
-Análise de produto, replay de sessão, feature flags, A/B test, error tracking, observabilidade de IA.
-
-Tudo num lugar só.
-
-Eu trabalho lá. E sim, nosso mascote é um ouriço. Por isso essa demo existe.
-
-A gente acredita que entender quem usa seu produto não devia exigir cinco ferramentas amarradas com fita.
+Tem alguém usando?
+Onde as pessoas travam?
+O que quebrou?
+O que muda agora?

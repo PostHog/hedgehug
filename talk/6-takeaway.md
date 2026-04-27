@@ -1,9 +1,5 @@
-# Construir já era. Crescer ainda não.
+# Agora deixa eu entender vocês.
 
-A diferença entre um projeto de fim de semana e um produto é entender quem usa.
+Sem dashboard. Sem SQL.
 
-Não precisa ser engenheiro de dados. Não precisa juntar cinco ferramentas.
-
-Precisa fazer as perguntas certas, e ter algo que responda.
-
-**posthog.com**
+Só pergunta.

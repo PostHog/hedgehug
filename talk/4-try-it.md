@@ -1,9 +1,5 @@
-# Bora. Vocês são meus usuários agora.
+# É aqui que entra o PostHog.
 
-Escaneia o QR. Adota um ouriço. Conversa com o Max.
+Tudo o que você precisa pra entender quem usa seu produto.
 
-Pode quebrar coisa. Quanto mais movimento, melhor.
-
-![QR Code](/qr-talk.svg)
-
-**hog.pet**
+Em um lugar só.

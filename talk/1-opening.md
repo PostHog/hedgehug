@@ -1,7 +1,8 @@
-# Vibecodei isso aqui ontem à tarde.
-
-Plataforma de adoção de ouriços. Chat com IA, banco realtime, internacionalização.
-
-Tudo.
-
-**Construir já não é mais o problema.**
+---
+layout: intro
+title: Beyond Observability
+subtitle: Using MCPs for full product visibility
+name: Fernando Gomes
+role: Product Engineer
+mascot: /hog.png
+---

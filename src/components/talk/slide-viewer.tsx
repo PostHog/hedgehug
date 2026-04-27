@@ -5,10 +5,30 @@ import ReactMarkdown from "react-markdown"
 import { ChevronLeft, ChevronRight } from "lucide-react"
 import Image from "next/image"
 import { MermaidDiagram } from "./mermaid-diagram"
+import { IntroSlide } from "./intro-slide"
 
 interface Slide {
   filename: string
   content: string
+}
+
+interface ParsedSlide {
+  meta: Record<string, string>
+  body: string
+}
+
+function parseFrontmatter(content: string): ParsedSlide {
+  const match = content.match(/^---\n([\s\S]*?)\n---\n?([\s\S]*)$/)
+  if (!match) return { meta: {}, body: content }
+  const meta: Record<string, string> = {}
+  match[1].split("\n").forEach((line) => {
+    const colonIdx = line.indexOf(":")
+    if (colonIdx === -1) return
+    const key = line.slice(0, colonIdx).trim()
+    const value = line.slice(colonIdx + 1).trim()
+    if (key) meta[key] = value
+  })
+  return { meta, body: match[2] }
 }
 
 export function SlideViewer({ slides }: { slides: Slide[] }) {
@@ -60,6 +80,30 @@ export function SlideViewer({ slides }: { slides: Slide[] }) {
   }, [goNext, goPrev])
 
   const slide = slides[current]
+  const parsed = parseFrontmatter(slide.content)
+  const isIntro = parsed.meta.layout === "intro"
+
+  if (isIntro) {
+    return (
+      <div className="fixed inset-0 select-none">
+        <IntroSlide
+          title={parsed.meta.title || ""}
+          subtitle={parsed.meta.subtitle}
+          name={parsed.meta.name || ""}
+          role={parsed.meta.role || ""}
+          mascotSrc={parsed.meta.mascot}
+        />
+        <SlideNav
+          current={current}
+          total={slides.length}
+          onPrev={goPrev}
+          onNext={goNext}
+          onJump={setCurrent}
+          theme="light"
+        />
+      </div>
+    )
+  }
 
   return (
     <div className="fixed inset-0 bg-[#151515] text-[#EEEFE9] flex flex-col select-none">
@@ -201,48 +245,82 @@ export function SlideViewer({ slides }: { slides: Slide[] }) {
               ),
             }}
           >
-            {slide.content}
+            {parsed.body}
           </ReactMarkdown>
         </div>
       </div>
 
-      {/* Navigation */}
-      <div className="absolute bottom-0 left-0 right-0 flex items-center justify-between px-6 py-4 bg-gradient-to-t from-[#151515] via-[#151515] to-transparent pointer-events-none">
-        <button
-          onClick={goPrev}
-          disabled={current === 0}
-          className="pointer-events-auto p-3 rounded-full bg-[#EEEFE9]/10 hover:bg-[#EEEFE9]/20 disabled:opacity-20 disabled:hover:bg-[#EEEFE9]/10 transition-colors"
-        >
-          <ChevronLeft className="h-5 w-5" />
-        </button>
+      <SlideNav
+        current={current}
+        total={slides.length}
+        onPrev={goPrev}
+        onNext={goNext}
+        onJump={setCurrent}
+        theme="dark"
+      />
+    </div>
+  )
+}
 
-        {/* Progress bar */}
-        <div className="flex-1 mx-6 pointer-events-auto">
-          <div className="flex gap-1.5">
-            {slides.map((_, i) => (
-              <button
-                key={i}
-                onClick={() => setCurrent(i)}
-                className={`h-1 flex-1 rounded-full transition-colors ${
-                  i === current
-                    ? "bg-[#F9BD2B]"
-                    : i < current
-                      ? "bg-[#EEEFE9]/30"
-                      : "bg-[#EEEFE9]/10"
-                }`}
-              />
-            ))}
-          </div>
+function SlideNav({
+  current,
+  total,
+  onPrev,
+  onNext,
+  onJump,
+  theme,
+}: {
+  current: number
+  total: number
+  onPrev: () => void
+  onNext: () => void
+  onJump: (i: number) => void
+  theme: "dark" | "light"
+}) {
+  const isDark = theme === "dark"
+  const btnBase = isDark
+    ? "bg-[#EEEFE9]/10 hover:bg-[#EEEFE9]/20 text-[#EEEFE9]"
+    : "bg-[#151515]/10 hover:bg-[#151515]/20 text-[#151515]"
+  const segActive = isDark ? "bg-[#F9BD2B]" : "bg-[#F54E00]"
+  const segPast = isDark ? "bg-[#EEEFE9]/30" : "bg-[#151515]/30"
+  const segFuture = isDark ? "bg-[#EEEFE9]/10" : "bg-[#151515]/10"
+  const gradient = isDark
+    ? "bg-gradient-to-t from-[#151515] via-[#151515]/80 to-transparent"
+    : "bg-gradient-to-t from-[#EEEFE9] via-[#EEEFE9]/80 to-transparent"
+
+  return (
+    <div
+      className={`absolute bottom-0 left-0 right-0 flex items-center justify-between px-6 py-4 pointer-events-none ${gradient}`}
+    >
+      <button
+        onClick={onPrev}
+        disabled={current === 0}
+        className={`pointer-events-auto p-3 rounded-full disabled:opacity-20 transition-colors ${btnBase}`}
+      >
+        <ChevronLeft className="h-5 w-5" />
+      </button>
+
+      <div className="flex-1 mx-6 pointer-events-auto">
+        <div className="flex gap-1.5">
+          {Array.from({ length: total }).map((_, i) => (
+            <button
+              key={i}
+              onClick={() => onJump(i)}
+              className={`h-1 flex-1 rounded-full transition-colors ${
+                i === current ? segActive : i < current ? segPast : segFuture
+              }`}
+            />
+          ))}
         </div>
-
-        <button
-          onClick={goNext}
-          disabled={current === slides.length - 1}
-          className="pointer-events-auto p-3 rounded-full bg-[#EEEFE9]/10 hover:bg-[#EEEFE9]/20 disabled:opacity-20 disabled:hover:bg-[#EEEFE9]/10 transition-colors"
-        >
-          <ChevronRight className="h-5 w-5" />
-        </button>
       </div>
+
+      <button
+        onClick={onNext}
+        disabled={current === total - 1}
+        className={`pointer-events-auto p-3 rounded-full disabled:opacity-20 transition-colors ${btnBase}`}
+      >
+        <ChevronRight className="h-5 w-5" />
+      </button>
     </div>
   )
 }
