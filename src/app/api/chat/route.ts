@@ -59,7 +59,7 @@ export async function POST(request: NextRequest) {
     const traceId = crypto.randomUUID()
 
     const stream = anthropic.messages.stream({
-      model: "claude-haiku-4-5-20251001",
+      model: "claude-opus-4-7",
       max_tokens: 512,
       system: systemPrompt,
       messages,
@@ -116,7 +116,7 @@ export async function POST(request: NextRequest) {
                 $ai_trace_id: traceId,
                 $ai_session_id: sessionId,
                 $ai_provider: "anthropic",
-                $ai_model: "claude-haiku-4-5-20251001",
+                $ai_model: "claude-opus-4-7",
                 $ai_stream: true,
                 $ai_max_tokens: 512,
                 $ai_latency: latency,
